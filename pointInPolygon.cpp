@@ -12,20 +12,17 @@ bool liesOnSegment(pair<int,int> p, pair<int,int> q, pair<int,int> r)
 	return false; 
 } 
 
-//To find how three points lies
-// 0 --> p, q and r are colinear 
-// 1 --> Clockwise 
-// 2 --> Counterclockwise 
+//To find how three points lies 
 int orientation(pair<int,int> p, pair<int,int> q, pair<int,int> r) 
 { 
 	int val = (q.second - p.second) * (r.first - q.first) - 
 			(q.first - p.first) * (r.second - q.second); 
 
 	if (val == 0) return 0; // colinear 
-	return (val > 0)? 1: 2; // clock or counterclock wise 
+	return (val > 0)? 1: 2; // clock || counterclock wise 
 } 
 
-// To tell if line segment 'p1q1' and 'p2q2' intersects 
+// To tell if line segment 'p1 q1' and 'p2 q2' intersects 
 bool dolineSegIntersect(pair<int,int> p1, pair<int,int> q1, pair<int,int> p2, pair<int,int> q2) 
 { 
 	int o1 = orientation(p1, q1, p2); 
@@ -50,10 +47,10 @@ bool dolineSegIntersect(pair<int,int> p1, pair<int,int> q1, pair<int,int> p2, pa
 // Returns true if the point p lies inside the polygon 
 bool pointIsInsidePolygon(pair<int,int> polygon[], int n, int x, int y) 
 { 
-	// There must be at least 3 vertices in polygon
+	// Valid polygon
 	if (n < 3) return false; 
 
-	// Create a point for line segment from (x,y) to infinite 
+	// line from (x,y) to infinite 
 	pair<int,int> extreme = {INF, y}; 
 
 	// Count intersections of the above line with sides of polygon 
